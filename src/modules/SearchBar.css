@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+}
+
+.container{
+    background: #e4eefa;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBar{
+    background: #fff;
+    width:90%;
+    max-width: 800px;
+    height: 60px;
+    padding: 8px 2px;
+    display: flex;
+    border-radius: 4px;
+    box-shadow: 8px 8px 6px -10px #b3c6ff;
+}
+
+
+
+#selectCate{
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #6f768d;
+    width: 220px;
+    padding: 0px 15px;
+    cursor: pointer;
+    position: relative;
+    border-right: 2px solid #dde2f1;
+}
+
+#selectCate img{
+    height: 30px;
+}
+
+#selectCate ul{
+    position: absolute;
+    top: 150%;
+    left: 0;
+    background-color: #fff;
+    color: #6f768d;
+    width: 95%;
+    border-radius: 4px;
+    overflow: hidden; /* 要再寫這個才是會真的不見 */
+    transition: max-height 0.2s; /* 動畫過場 */
+}
+
+#selectCate ul.close {
+    max-height: 0px;
+}
+
+#selectCate ul.open {
+    max-height: 500px;
+}
+
+#selectCate li{
+    padding: 12px 20px;
+}
+
+#selectCate li:hover{
+    color: black;
+}
+
+
+
+#searchBox {
+    display: flex;
+    width: 100%;
+    padding: 0px;
+    position: relative;
+}
+
+#searchBox input{
+    padding: 0px 5%;
+    width: 200%;
+    border: none;
+    outline: none; /* 沒寫這個的話 輸入input的時候會有一圈橘框 */
+    font-size: 16px;
+    color: #6f768d
+}
+
+#searchBox ul{
+    position: absolute;
+    top: 150%;
+    left: 0;
+    background-color: #fff;
+    color: #6f768d;
+    width: 100%;
+    border-radius: 4px;
+    max-height: 0px;
+    overflow: hidden;
+}
+
+#searchBox ul.close{
+    max-height: 0px; 
+    overflow-y: auto;
+}
+
+#searchBox ul.open{
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+#searchBox li{
+    padding: 12px 5%;
+}
+
+#searchBox li:hover{
+    color: black;
+}
