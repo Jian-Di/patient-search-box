@@ -1,5 +1,7 @@
 import React from "react";
-import SearchBar from "./modules/SearchBar.js";
+import SearchData from "./modules/SearchData.js";
+import PatientInfo from "./modules/PatientInfo.js";
+import CountDown from "./modules/CountDown.js";
 import './App.css';
 
 const App = () => {
@@ -8,7 +10,9 @@ const App = () => {
         <>
             {/* <NavBar /> */}
             <div className="App-container">
-                <SearchBar />
+                <CountDown />
+                <PatientInfo />
+                <SearchData />
             </div>
         </>
     )

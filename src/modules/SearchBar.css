@@ -15,21 +15,34 @@
     align-items: center;
 }
 
+.searchBarCard{
+    background: #fff;
+    width: 90%;
+    max-width: 640px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #b3c6ff;
+    border-radius: 8px;
+    box-shadow: 8px 8px 6px -8px #b3c6ff;
+}
+
 .searchBar{
     background: #fff;
-    width:90%;
-    max-width: 800px;
-    height: 60px;
-    padding: 8px 2px;
+    width: 90%;
+    max-width: 560px;
+    height: 45px;
+    padding: 0px;
     display: flex;
-    border-radius: 4px;
-    box-shadow: 8px 8px 6px -10px #b3c6ff;
+    border: 0.5px solid #b3c6ff;
+    border-radius: 8px;
 }
 
 
 
 #selectCate{
-    background: #fff;
+    background: #e4eefa;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,11 +51,16 @@
     padding: 0px 15px;
     cursor: pointer;
     position: relative;
-    border-right: 2px solid #dde2f1;
+    border-radius: 8px;
+}
+
+#selectCate:hover img{
+    opacity: 0.3;
 }
 
 #selectCate img{
-    height: 30px;
+    height: 15px;
+    opacity: 0.6;
 }
 
 #selectCate ul{
@@ -53,12 +71,13 @@
     color: #6f768d;
     width: 95%;
     border-radius: 4px;
+    border: 0.5px solid #b3c6ff;
     overflow: hidden; /* 要再寫這個才是會真的不見 */
     transition: max-height 0.2s; /* 動畫過場 */
 }
 
 #selectCate ul.close {
-    max-height: 0px;
+    display: none;
 }
 
 #selectCate ul.open {
@@ -70,6 +89,7 @@
 }
 
 #selectCate li:hover{
+    background-color: #b3c6ff;
     color: black;
 }
 
@@ -80,6 +100,7 @@
     width: 100%;
     padding: 0px;
     position: relative;
+    border-radius: 8px;
 }
 
 #searchBox input{
@@ -99,13 +120,12 @@
     color: #6f768d;
     width: 100%;
     border-radius: 4px;
-    max-height: 0px;
+    border: 0.5px solid #b3c6ff;
     overflow: hidden;
 }
 
 #searchBox ul.close{
-    max-height: 0px; 
-    overflow-y: auto;
+    display: none;
 }
 
 #searchBox ul.open{
@@ -118,5 +138,29 @@
 }
 
 #searchBox li:hover{
+    background-color: #b3c6ff;
     color: black;
+}
+
+#searchBox li.focus{
+    background-color: #b3c6ff;
+    color: black;
+}
+
+#searchBox img{
+    height: 20px;
+}
+
+.SearchBar-button{
+    background-color: #fff;
+    opacity: 0.6;
+    border: none;
+    margin-right: 20px;
+    align-items: center;
+    display: flex;
+    outline: none;
+}
+
+.SearchBar-button:hover{
+    opacity: 0.3;
 }

@@ -1,0 +1,15 @@
+.DataCard{
+    background: #fff;
+    width: 90%;
+    max-width: 640px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #b3c6ff;
+    border-radius: 8px;
+    box-shadow: 8px 8px 6px -8px #b3c6ff;
+}

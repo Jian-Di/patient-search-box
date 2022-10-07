@@ -4,17 +4,53 @@ const patientData = [
         ques: "dia-Q1",
         ans: "dia-A1",
     },{
+        cate: "Dialogue",
+        ques: "dia-Q2",
+        ans: "dia-A22222222222222222",
+    },{
+        cate: "Dialogue",
+        ques: "dia-Q2",
+        ans: "dia-A22222222222222222",
+    },{
+        cate: "Dialogue",
+        ques: "dia-Q2",
+        ans: "dia-A22222222222222222",
+    },{
         cate: "PE",
         ques: "PE-Q1",
         ans: "PE-A1"
     },{
-        cate: "Lab Study",
+        cate: "PE",
+        ques: "PE-Q2",
+        ans: "PE-A2"
+    },{
+        cate: "Lab",
         ques: "lab-Q1",
         ans: "lab-A1"
     },{
+        cate: "Lab",
+        ques: "lab-Q1",
+        ans: "lab-A111111111111111"
+    },{
+        cate: "Lab",
+        ques: "lab-Q1",
+        ans: "lab-A111111111111111"
+    },{
+        cate: "Lab",
+        ques: "lab-Q1",
+        ans: "lab-A111111111111111"
+    },{
+        cate: "Lab",
+        ques: "lab-Q1",
+        ans: "lab-A111111111111111"
+    },{
         cate: "Image",
         ques: "image-Q1",
-        ans: "image-A1"
+        click: "image-A1"
+    },{
+        cate: "Image",
+        ques: "image-Q2",
+        click: "image-A2"
     },{
         cate: "Monitor",
         ques: "monitor-Q1",

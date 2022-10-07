@@ -1,0 +1,26 @@
+.PatientInfo-container{
+    width: 90%;
+    max-width: 640px;
+    padding: 24px 0px;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.PatientInfo-topic{
+    width: 128px;
+    height: 30px;
+    background-color: #3d528f;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.PatientInfo-text{
+    padding: 20px;
+}
