@@ -29,7 +29,7 @@ const DataList = (props) => {
                     {`${data.ques}　`}
                     <Image
                         width={30}
-                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                        src={data.click}
                     />
                 </div>
             )
