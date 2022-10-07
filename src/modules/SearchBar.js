@@ -145,7 +145,7 @@ const SearchBar = (props) => {
         <div className="searchBarCard">
             <div className="searchBar">
                 <div id="selectCate" onClick={changeCateToggle}>
-                    <p>{cateName}</p>
+                    {cateName}
                     <img src="arrow.png" />
                     <ul id="cateList" className={cateToggleOn ? "open" : "close"}>
                         {cateList}

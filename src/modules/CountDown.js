@@ -31,11 +31,11 @@ const CountDown = () => {
     return (
         <div className="Countdown-container">
             <div className="Countdown-card">
-                <p>{returnMin}</p>
+                {returnMin}
             </div>
-            <p className="colon">:</p>
+            <span className="colon">:</span>
             <div className="Countdown-card">
-                <p>{returnSec}</p>
+                {returnSec}
             </div>
         </div>
     )

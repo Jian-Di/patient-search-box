@@ -3,6 +3,7 @@ import SearchData from "./modules/SearchData.js";
 import PatientInfo from "./modules/PatientInfo.js";
 import CountDown from "./modules/CountDown.js";
 import './App.css';
+import 'antd/dist/antd.css'
 
 const App = () => {
 

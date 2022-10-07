@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import DataList from "./DataList";
 import "./DataCard.css";
-import { Image } from 'antd';
-import 'antd/dist/antd.css';
 
 /**
  * Show 出已經查到的data

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./DataList.css"
+import { Image } from 'antd';
 
 /**
  * return 單一種 category 的 active data list HTML
@@ -25,8 +26,11 @@ const DataList = (props) => {
         } else {
             return (
                 <div className={"DataList-tag "+ props.cateName} onClick={tagOnClick} >
-                    {`${data.ques}`}
-                    <span>。</span>
+                    {`${data.ques}　`}
+                    <Image
+                        width={30}
+                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
                 </div>
             )
         }

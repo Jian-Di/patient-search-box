@@ -8,10 +8,10 @@ const PatientInfo = () => {
         <> 
         <div className="PatientInfo-container">
             <div className="PatientInfo-topic">
-                <p>Patient Info</p>
+                Patient Info
             </div>
             <div className="PatientInfo-text">
-                <p>{patientInfoText}</p>
+                {patientInfoText}
             </div>
         </div>
         </>
