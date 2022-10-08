@@ -6,6 +6,7 @@
     margin-bottom: 100px;
     padding: 20px;
     display: flex;
+    z-index: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;

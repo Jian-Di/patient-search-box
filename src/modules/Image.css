@@ -1,0 +1,28 @@
+.Image-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 600;
+}
+
+.Image-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 900;
+    
+}
+
+.Image-container img {
+    max-width: 90%;
+    max-height: 90%;
+}

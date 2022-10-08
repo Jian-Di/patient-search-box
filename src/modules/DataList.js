@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./DataList.css"
+import Image from "./Image";
 
 /**
  * return 單一種 category 的 active data list HTML
@@ -10,23 +11,24 @@ import "./DataList.css"
  */
 
 const DataList = (props) => {
+    const [clickedImage, setClickedImage] = useState("");
 
-    const tagOnClick = () => {
-        console.log("click");
+    const tagOnClick = (data) => {
+        setClickedImage(data.imgsrc);
     };
 
     const dataHTML = (data) => {
-        if (data.click === undefined) {
+        if (props.cateName === "Image") {
             return (
-                <div className={"DataList-tag "+ props.cateName}>
-                    {`${data.ques}:${data.ans}`}
+                <div className={"DataList-tag DataList-clickableTag "+ props.cateName} onClick={() => tagOnClick(data)} >
+                    {`${data.ques}`}
+                    <img src="click.png" />
                 </div>
             )
         } else {
             return (
-                <div className={"DataList-tag "+ props.cateName} onClick={tagOnClick} >
-                    {`${data.ques}`}
-                    <span>。</span>
+                <div className={"DataList-tag "+ props.cateName}>
+                    {`${data.ques}:${data.ans}`}
                 </div>
             )
         }
@@ -36,6 +38,7 @@ const DataList = (props) => {
 
     return (
         <>
+        {clickedImage == "" ? null : <Image imgsrc={clickedImage} setClickedImage={setClickedImage} />}
         <div className="DataList">
             {data}
         </div>

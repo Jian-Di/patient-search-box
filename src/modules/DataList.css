@@ -1,8 +1,10 @@
 .DataList{
     width: 100%;
     display: flex;
+    z-index: auto;
     flex-wrap: wrap;
     padding: 10px;
+    
 
 }
 
@@ -11,9 +13,19 @@
     padding: 10px;
     margin: 5px;
     display: flex;
+    z-index: auto;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
+}
+
+.DataList-clickableTag img{
+    height: 20px;
+    margin-left: 5px;
+}
+
+.DataList-clickableTag:hover{
+    opacity: 0.5;
 }
 
 .Monitor{

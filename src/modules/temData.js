@@ -46,11 +46,11 @@ const patientData = [
     },{
         cate: "Image",
         ques: "image-Q1",
-        click: "image-A1"
+        imgsrc: "CXR-1.jpg"
     },{
         cate: "Image",
         ques: "image-Q2",
-        click: "image-A2"
+        imgsrc: "CXR-1.jpg"
     },{
         cate: "Monitor",
         ques: "monitor-Q1",
