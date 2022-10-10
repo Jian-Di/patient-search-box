@@ -1,6 +1,17 @@
-.PatientInfo-container{
+.AnsColumn{
+    flex-grow: 0;
+    width: 720px;
+    min-height: 100vh;
+    background-color: #3c4254;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.AnsColumn-container{
     width: 90%;
-    max-width: 640px;
+    max-width: 560px;
     padding: 24px 0px;
     padding-top: 64px;
     display: flex;
@@ -8,11 +19,10 @@
     justify-content: flex-start;
 }
 
-.PatientInfo-topic{
+.AnsColumn-topic{
     width: 128px;
     height: 30px;
-    background-color: #3d528f;
-    color: #fff;
+    background-color: #e4eefa;
     font-size: 16px;
     letter-spacing: 1px;
     display: flex;
@@ -21,6 +31,7 @@
     border-radius: 15px;
 }
 
-.PatientInfo-text{
+.AnsColumn-text{
+    color: white;
     padding: 20px;
 }

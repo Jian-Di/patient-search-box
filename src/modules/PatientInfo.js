@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from "react";
 import "./PatientInfo.css";
 
-const PatientInfo = () => {
-    const patientInfoText = "A 33-year-old woman presented to ER for fever for two days"
-    
+/**
+ * 病人資訊欄
+ * 
+ * Propstype
+ * @param {String} infoText 病人介紹文字 
+ */
+const PatientInfo = (props) => {   
     return (
         <> 
         <div className="PatientInfo-container">
@@ -11,7 +15,7 @@ const PatientInfo = () => {
                 <p>Patient Info</p>
             </div>
             <div className="PatientInfo-text">
-                <p>{patientInfoText}</p>
+                <p>{props.infoText}</p>
             </div>
         </div>
         </>

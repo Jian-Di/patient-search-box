@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import "./SearchBar.css";
-import patientData from "./temData";
 
 /**
  * 搜尋欄 (parent component: DataSearch.js)
@@ -9,14 +8,17 @@ import patientData from "./temData";
  * 3. Enter後會將 value 存成 active data 傳到 Data card
  * 
  * Proptypes
+ * @param {Array} patientData 此病人的所有 data
  * @param {Array} activeData 現在已經查到的 activeData
  * @param {({submittedData} => void)} setActiveData 設定現在已經查到的 activeData
+ * @param {Boolean} timesUp 時間到了沒
  */
 
 const SearchBar = (props) => {
     /**
      * category 的 dropdown menu
      */
+    const patientData = props.patientData;
     const [cateName, setCateName] = useState("All Categories");
     const [cateToggleOn, setCateToggleOn] = useState(false);
     const cateNameList = ["All Categories", "Dialogue", "PE", "Lab", "Image", "Monitor"];
@@ -71,6 +73,7 @@ const SearchBar = (props) => {
 
     /**
      * input box 的建議搜尋清單
+     * 處理 click
      */
     const [value, setValue] = useState("");
 
@@ -79,15 +82,20 @@ const SearchBar = (props) => {
     const filteredPatientData = cateFilteredPatientData.filter((data) => data.ques.toLowerCase().indexOf(value.toLowerCase()) !== -1);
 
     const searchList = filteredPatientData.map((patientData, index) => (
-        <li onClick={() => {
-            setValue(patientData.ques);
-            }}
+        <li onClick={(event) => handleClick(event, patientData)}
             onMouseOver={() => {setFocusIndex(-1)}}
             className={index === focusIndex ? "focus": null}
         >
             {`${patientData.cate}: ${patientData.ques}`}
         </li>
     ));
+
+    const handleClick = (event, patientData) => {
+        setValue(event.target.value);
+        setValue(patientData.ques);
+        setTempEnterEffect(true);
+    };
+
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -96,9 +104,10 @@ const SearchBar = (props) => {
     };
 
     /**
-     * 送出 input 裡面的文字 回傳對應的 data object 到 data card
-     * 已經送過的文字就不能再送
-     * 按下enter之後 建議清單會暫時消失
+     * 處理 Enter
+     * 1. 送出 input 裡面的文字 回傳對應的 data object 到 data card
+     * 2. 已經送過的文字就不能再送
+     * 3. 按下enter之後 建議清單會暫時消失
      */
 
     const [tempEnterEffect, setTempEnterEffect] = useState(false);
@@ -123,15 +132,10 @@ const SearchBar = (props) => {
             }
             return false
         };
-        
-        let submittedData = [];
 
-        if (quesAskedOrNot(value) === false) {
-            submittedData = getDataOrNot(value);
-        }
-
-        if (submittedData !== []){
-            props.setActiveData((activeData) => (activeData.concat(submittedData)));
+        if (quesAskedOrNot(value) === false){
+            const submittedData = getDataOrNot(value);
+            props.setActiveData((activeData) => [...activeData, ...submittedData]); 
         }
         setValue("");
     };
@@ -152,6 +156,11 @@ const SearchBar = (props) => {
                     </ul>
                 </div>
                 <div id="searchBox">
+                    {props.timesUp ? 
+                    <input
+                        readonly="readonly"
+                        placeholder="Times Up!"/>
+                    : 
                     <input 
                         type="text" 
                         placeholder={`Press enter to search in ${cateName}`}
@@ -159,6 +168,7 @@ const SearchBar = (props) => {
                         onChange={handleChange}
                         onKeyDown={handleKey}
                         />
+                    }
                     <button
                         type="submit"
                         className="SearchBar-button"

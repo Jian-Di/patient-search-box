@@ -8,9 +8,33 @@
 
 .App-container{
   background: #e4eefa;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   display: flex;
+  justify-content: center;
+}
+
+.App-main{
+  flex-grow: 1;
+  width: 720px;
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:center;
+}
+
+/* 以下是為了隱藏滾動條 */
+html {
+  overflow: -moz-hidden-unscrollable;
+  height: 100%;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  height: 100%;
+  width: calc(100vw + 18px);
+  overflow: auto;
 }

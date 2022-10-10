@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import "./DataList.css"
 import Image from "./Image";
+import Tables from "./Tables";
 
 /**
- * return 單一種 category 的 active data list HTML
+ * 1. return 單一種 category 的 active data list HTML
+ * 2. 若點擊 image tag 會 render <Image>
  * 
  * Proptypes
  * @param {Array} data 現在active data 裡面屬於 cateName 的 data list
@@ -12,35 +14,73 @@ import Image from "./Image";
 
 const DataList = (props) => {
     const [clickedImage, setClickedImage] = useState("");
+    const [clickedTable, setClickedTable] = useState([]);
 
-    const tagOnClick = (data) => {
-        setClickedImage(data.imgsrc);
-    };
-
-    const dataHTML = (data) => {
-        if (props.cateName === "Image") {
+    const handleImage = (data) => {
+        if (data.imgsrc === "Not offered"){
             return (
-                <div className={"DataList-tag DataList-clickableTag "+ props.cateName} onClick={() => tagOnClick(data)} >
-                    {`${data.ques}`}
-                    <img src="click.png" />
+                <div 
+                className={"DataList-tag "+ props.cateName}>
+                    {`${data.ques}: ${data.imgsrc}`}
                 </div>
             )
         } else {
             return (
-                <div className={"DataList-tag "+ props.cateName}>
-                    {`${data.ques}:${data.ans}`}
+                <div 
+                className={"DataList-tag DataList-clickableTag "+ props.cateName} 
+                onClick={() => setClickedImage(data.imgsrc)} >
+                    {`${data.ques}`}
+                    <img src="click.png" />
                 </div>
             )
         }
     };
 
-    const data = props.data.map((data) => (dataHTML(data)));
+    const handleTable = (data) => {
+        return(
+            <div 
+            className={"DataList-tag DataList-clickableTag "+ props.cateName} 
+            onClick={() => setClickedTable(data.ans)} >
+                {`${data.ques}`}
+                <img src="click.png" />
+            </div>
+        )
+    };
+
+    const handleOthers = (data) => {
+        if (data.unit) {
+            return (
+                <div className={"DataList-tag "+ props.cateName}>
+                    {`${data.ques}: ${data.ans} ${data.unit}`}
+                </div>
+            )
+        } else {
+            return (
+                <div className={"DataList-tag "+ props.cateName}>
+                    {`${data.ques}: ${data.ans}`}
+                </div>
+            )
+        }
+    };
+
+    const dataHTML = (data) => {
+        if (props.cateName === "Image") {
+            return handleImage(data);
+        } else if (Array.isArray(data.ans)) {
+            return handleTable(data);
+        } else {
+            return handleOthers(data);
+        }
+    };
+
+    const dataListHTML = props.data.map((data) => (dataHTML(data)));
 
     return (
         <>
-        {clickedImage == "" ? null : <Image imgsrc={clickedImage} setClickedImage={setClickedImage} />}
+        {clickedImage === "" ? null : <Image imgsrc={clickedImage} setClickedImage={setClickedImage} />}
+        {clickedTable.length === 0 ? null : <Tables dataTable={clickedTable} setClickedTable={setClickedTable} />}
         <div className="DataList">
-            {data}
+            {dataListHTML}
         </div>
         </>
     )

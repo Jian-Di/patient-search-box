@@ -1,8 +1,17 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect} from "react";
 import "./CountDown.css";
 
-const CountDown = () => {
-    const countDownValue = 900000; // 暫時先15分鐘
+/**
+ * 倒數計時器
+ * 
+ * Propstype
+ * @param {Number} countDownValue 就是要倒數的時間 單位ms
+ * @param {(Boolean) => void} setTimesUp 設定時間到了沒
+ * @param {Boolean} timesUp 時間到了沒
+ * @param {String} layout 現在的排版
+ */
+const CountDown = (props) => {
+    const countDownValue = props.countDownValue;
     const [countDown, setCountDown] = useState(new Date(countDownValue));
     
     useEffect(() => {
@@ -11,6 +20,7 @@ const CountDown = () => {
         }, 1000);
 
         if (countDown.getTime() <=  0){
+            props.setTimesUp(true);
             clearInterval(interval);
         }
         return () => clearInterval(interval);
@@ -26,7 +36,11 @@ const CountDown = () => {
 
     const returnMin = plusZero(countDown.getMinutes());
     const returnSec = plusZero(countDown.getSeconds());
-
+    
+    if (props.timesUp || props.layout === "twoColumn" ) {
+        props.setTimesUp(true); // 如果變 twoColumn 也就是公布解答 就自動視為時間到
+        return (<></>)
+    }
 
     return (
         <div className="Countdown-container">

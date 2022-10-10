@@ -129,7 +129,7 @@
 }
 
 #searchBox ul.open{
-    max-height: 600px;
+    max-height: 350px;
     overflow-y: auto;
 }
 
