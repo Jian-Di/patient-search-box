@@ -11,6 +11,9 @@ import "./Tables.css"
 const Tables = (props) => {
 
     const mappedDataTable = props.dataTable.map((data) => {
+        if (data.interval) {
+            return data
+        }
         return {
             ...data,
             interval: `${data.lowerLimit} - ${data.upperLimit}`,
