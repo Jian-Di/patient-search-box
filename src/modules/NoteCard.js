@@ -14,7 +14,7 @@ const NoteCard = () => {
             <p>Note Board</p>
             <TextareaAutosize 
                 className="NoteCard-input"
-                placeholder="Write down your note here" />
+                placeholder="Write down your note here (e.g. diagnosis, treatment...)" />
         </div>
         </>
     )
