@@ -7,20 +7,80 @@
 const stanPatientData = [
     {
         cate: "Dialogue",
-        ques: "dia-Q1",
-        ans: "dia-A1",
+        ques: "Dyspnea on exertion",
+        ans: "No",
     },{
         cate: "Dialogue",
-        ques: "dia-Q2",
-        ans: "dia-A22222222222222222",
+        ques: "Orthopnea",
+        ans: "No",
     },{
         cate: "Dialogue",
-        ques: "dia-Q2",
-        ans: "dia-A22222222222222222",
+        ques: "Chest pain/tightness",
+        ans: "No",
     },{
         cate: "Dialogue",
-        ques: "dia-Q2",
-        ans: "dia-A22222222222222222",
+        ques: "Palpitation",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Cough",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Weight loss",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Sore throat",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Nausea/Vomiting",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Dizziness",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Hematuria",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Abdominal pain",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Diarrhea",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Constipation",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Past medical history",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Medication history",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Smoking",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Alcohol drinking",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Betel Nuts",
+        ans: "No",
+    },{
+        cate: "Dialogue",
+        ques: "Obstetric History",
+        ans: "G0P0A0",
     },{
         cate: "PE",
         ques: "GCS",
@@ -508,11 +568,11 @@ const stanPatientData = [
     },{
         cate: "Image",
         ques: "Chest X-ray",
-        imgsrc: "CXR-1.jpg"
+        imgsrc: "CXR.jpg"
     },{
         cate: "Image",
         ques: "12-Lead ECG",
-        imgsrc: "CXR-1.jpg"
+        imgsrc: "ECG.jpg"
     },{
         cate: "Image",
         ques: "Abdominal CT",

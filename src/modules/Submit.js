@@ -4,7 +4,7 @@ import "./Submit.css"
 const Submit = (props) => {
 
     const handleOnClick = () => {
-        let yes = window.confirm("Are you sure to submmit?\n*WARN: this page can NOT be edited after submission");
+        let yes = window.confirm("Are you sure to submit?\n*This page can NOT be edited after submission");
         if (yes) {
             props.setLayout("twoColumn")
         }

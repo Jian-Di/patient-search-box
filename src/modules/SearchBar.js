@@ -108,9 +108,11 @@ const SearchBar = (props) => {
      * 1. 送出 input 裡面的文字 回傳對應的 data object 到 data card
      * 2. 已經送過的文字就不能再送
      * 3. 按下enter之後 建議清單會暫時消失
+     * 4. 如果輸入的非有效文字 illegalInput: true 會產生紅框
      */
 
     const [tempEnterEffect, setTempEnterEffect] = useState(false);
+    const [illegalInput, setIllegalInput] = useState(false);
 
     const handleEnterKey = (event) => {
         event.preventDefault();
@@ -124,6 +126,7 @@ const SearchBar = (props) => {
     };
     
     const handleSubmit = () => {
+        const submittedData = getDataOrNot(value);
         const quesAskedOrNot = (value) => {
             for (let data of props.activeData) {
                 if (data.ques === value) {
@@ -133,9 +136,11 @@ const SearchBar = (props) => {
             return false
         };
 
-        if (quesAskedOrNot(value) === false){
-            const submittedData = getDataOrNot(value);
-            props.setActiveData((activeData) => [...activeData, ...submittedData]); 
+        if (quesAskedOrNot(value) === false && submittedData.length !== 0){
+            props.setActiveData((activeData) => [...activeData, ...submittedData]);
+            setIllegalInput(false); 
+        } else {
+            setIllegalInput(true);
         }
         setValue("");
     };
@@ -147,7 +152,7 @@ const SearchBar = (props) => {
     return (
         <>
         <div className="searchBarCard">
-            <div className="searchBar">
+            <div className={illegalInput ? "searchBar searchBar-illegal" : "searchBar"}>
                 <div id="selectCate" onClick={changeCateToggle}>
                     <p>{cateName}</p>
                     <img src="arrow.png" />
