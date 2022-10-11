@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/patient-search-box/static/css/main.529a2827.css",
+    "main.js": "/patient-search-box/static/js/main.e761dbae.js",
+    "index.html": "/patient-search-box/index.html",
+    "main.529a2827.css.map": "/patient-search-box/static/css/main.529a2827.css.map",
+    "main.e761dbae.js.map": "/patient-search-box/static/js/main.e761dbae.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.529a2827.css",
+    "static/js/main.e761dbae.js"
+  ]
+}
