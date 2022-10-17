@@ -1,25 +1,8 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    list-style: none;
-}
-
-.container{
-    background: #e4eefa;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.searchBarCard{
+.SearchBar-card{
     background: #fff;
     width: 90%;
     max-width: 640px;
-    height: 120px;
+    min-height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,23 +11,24 @@
     box-shadow: 8px 8px 6px -8px #b3c6ff;
 }
 
-.searchBar{
+.SearchBar-bar{
     background: #fff;
     width: 90%;
     max-width: 560px;
-    height: 45px;
+    min-height: 45px;
+    margin: 30px 0px;
     padding: 0px;
     display: flex;
     border: 0.5px solid #b3c6ff;
     border-radius: 8px;
 }
 
-.searchBar-illegal{
+.SearchBar-illegalBar{
     border: 2px solid #FABEC5;;
 }
 
 
-#selectCate{
+.SearchBar-selectCate{
     background: #e4eefa;
     display: flex;
     align-items: center;
@@ -57,18 +41,18 @@
     border-radius: 8px;
 }
 
-#selectCate:hover img{
+.SearchBar-selectCate:hover img{
     opacity: 0.3;
 }
 
-#selectCate img{
+.SearchBar-selectCate img{
     height: 15px;
     opacity: 0.6;
 }
 
-#selectCate ul{
+.SearchBar-selectCate ul{
     position: absolute;
-    top: 150%;
+    top: calc(100% + 20px);
     left: 0;
     background-color: #fff;
     color: #6f768d;
@@ -79,45 +63,56 @@
     transition: max-height 0.2s; /* 動畫過場 */
 }
 
-#selectCate ul.close {
+.SearchBar-selectCate ul.close {
     display: none;
 }
 
-#selectCate ul.open {
+.SearchBar-selectCate ul.open {
     max-height: 500px;
 }
 
-#selectCate li{
+.SearchBar-selectCate li{
     padding: 12px 20px;
 }
 
-#selectCate li:hover{
+.SearchBar-selectCate li:hover{
     background-color: #b3c6ff;
     color: black;
 }
 
 
 
-#searchBox {
+.SearchBar-searchBox {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
-    padding: 0px;
+    padding-left: 2%;
     position: relative;
     border-radius: 8px;
 }
 
-#searchBox input{
-    padding: 0px 5%;
-    width: 200%;
+.SearchBar-inputColumn{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+}
+
+.SearchBar-searchBox input{
+    flex-grow: 1;
+    height: 40px;
+    padding: 0px 5px;
     border: none;
     outline: none; /* 沒寫這個的話 輸入input的時候會有一圈橘框 */
     font-size: 16px;
     color: #6f768d
 }
 
-#searchBox ul{
+
+
+.SearchBar-searchBox .SearchBar-searchList{
     position: absolute;
-    top: 150%;
+    top: calc(100% + 20px);
     left: 0;
     background-color: #fff;
     color: #6f768d;
@@ -127,30 +122,32 @@
     overflow: hidden;
 }
 
-#searchBox ul.close{
+.SearchBar-searchBox .close{
     display: none;
 }
 
-#searchBox ul.open{
+.SearchBar-searchBox .open{
     max-height: 350px;
     overflow-y: auto;
 }
 
-#searchBox li{
+.SearchBar-searchBox .SearchBar-searchList li{
     padding: 12px 5%;
 }
 
-#searchBox li:hover{
+.SearchBar-searchBox .SearchBar-searchList li:hover{
     background-color: #b3c6ff;
     color: black;
 }
 
-#searchBox li.focus{
+.SearchBar-searchBox .SearchBar-searchList li.focus{
     background-color: #b3c6ff;
     color: black;
 }
 
-#searchBox img{
+
+
+.SearchBar-searchBox img{
     height: 20px;
 }
 
@@ -158,7 +155,7 @@
     background-color: #fff;
     opacity: 0.6;
     border: none;
-    margin-right: 20px;
+    margin-right: 10px;
     align-items: center;
     display: flex;
     outline: none;
@@ -166,4 +163,34 @@
 
 .SearchBar-button:hover{
     opacity: 0.3;
+}
+
+
+
+.SearchBar-tag{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.SearchBar-tag li{
+    white-space: nowrap;
+    height: 36px;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #b3c6ff;
+}
+
+.SearchBar-tag img{
+    height: 15px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.SearchBar-tag img:hover{
+    opacity: 0.5;
 }

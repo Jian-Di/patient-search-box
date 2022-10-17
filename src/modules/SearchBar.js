@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./SearchBar.css";
 
 /**
@@ -77,12 +77,12 @@ const SearchBar = (props) => {
      */
     const [value, setValue] = useState("");
 
-    const cateFilteredPatientData = (cateName === "All Categories") ? patientData : patientData.filter((data) => data.cate == cateName);
+    const cateFilteredPatientData = (cateName === "All Categories") ? patientData : patientData.filter((data) => data.cate === cateName);
 
     const filteredPatientData = cateFilteredPatientData.filter((data) => data.ques.toLowerCase().indexOf(value.toLowerCase()) !== -1);
 
     const searchList = filteredPatientData.map((patientData, index) => (
-        <li onClick={(event) => handleClick(event, patientData)}
+        <li onClick={(event) => handleClickSearchList(event, patientData)}
             onMouseOver={() => {setFocusIndex(-1)}}
             className={index === focusIndex ? "focus": null}
         >
@@ -90,42 +90,41 @@ const SearchBar = (props) => {
         </li>
     ));
 
-    const handleClick = (event, patientData) => {
-        setValue(event.target.value);
-        setValue(patientData.ques);
-        setTempEnterEffect(true);
+    const handleClickSearchList = (event, patientData) => {
+        event.preventDefault();
+        setValue("");
+        addTags(patientData.ques);
     };
 
 
     const handleChange = (event) => {
         setValue(event.target.value);
         setFocusIndex(-1);
-        setTempEnterEffect(false);
     };
 
     /**
      * 處理 Enter
-     * 1. 送出 input 裡面的文字 回傳對應的 data object 到 data card
+     * 1. 如果此時沒有focus在建議清單上 就送出所有 tag 的文字 回傳對應的 data object 到 data card
      * 2. 已經送過的文字就不能再送
-     * 3. 按下enter之後 建議清單會暫時消失
-     * 4. 如果輸入的非有效文字 illegalInput: true 會產生紅框
+     * 3. 若此時有focus在建議清單上 會增加一項對應的tag
+     * 4. 如果輸入的非有效文字illegalInput: true 會產生紅框
      */
 
-    const [tempEnterEffect, setTempEnterEffect] = useState(false);
     const [illegalInput, setIllegalInput] = useState(false);
 
     const handleEnterKey = (event) => {
         event.preventDefault();
-        if (event.key.value !== "" && (focusIndex < 0 || focusIndex >= searchList.length)) {
-            handleSubmit();
-        } else{
-            setValue(filteredPatientData[focusIndex].ques)
+        if (focusIndex < 0 || focusIndex >= searchList.length) {
+            tags.forEach((tag) => handleSubmit(tag));
+            setTags([]);
+        } else if (value !== ""){ 
+            addTags(filteredPatientData[focusIndex].ques)
+            setValue("")
             setFocusIndex(-1);
-            setTempEnterEffect(true);
         }
     };
     
-    const handleSubmit = () => {
+    const handleSubmit = (value) => {
         const submittedData = getDataOrNot(value);
         const quesAskedOrNot = (value) => {
             for (let data of props.activeData) {
@@ -149,39 +148,70 @@ const SearchBar = (props) => {
         return patientData.filter((data) => (data.ques === dataQues))   
     };
 
+    /**
+     * 處理 Tags
+     */
+    const [tags, setTags] = useState([]);
+
+    const addTags = (value) => {
+        if (!tags.includes(value)){
+            setTags([...tags, value]);
+        } else {
+            setIllegalInput(true);
+        }
+    };
+
+    const removeTags = (indexToRemove) => {
+        setTags(tags.filter((_, index) => index !== indexToRemove));
+    };
+
+    const tagList = tags.map((tag, index) => (
+        <li index={index}>
+            <span>{tag}</span>
+            <img 
+            src="./patient-search-box/delete.png"
+            onClick={() => removeTags(index)}></img>
+        </li>
+    ));
+
     return (
         <>
-        <div className="searchBarCard">
-            <div className={illegalInput ? "searchBar searchBar-illegal" : "searchBar"}>
-                <div id="selectCate" onClick={changeCateToggle}>
+        <div className="SearchBar-card">
+            <div className={illegalInput ? "SearchBar-bar SearchBar-illegalBar" : "SearchBar-bar"}>
+                <div className="SearchBar-selectCate" onClick={changeCateToggle}>
                     <p>{cateName}</p>
-                    <img src="arrow.png" />
-                    <ul id="cateList" className={cateToggleOn ? "open" : "close"}>
+                    <img src="./patient-search-box/arrow.png" alt="" />
+                    <ul className={cateToggleOn ? "open" : "close"}>
                         {cateList}
                     </ul>
                 </div>
-                <div id="searchBox">
-                    {props.timesUp ? 
-                    <input
-                        readonly="readonly"
-                        placeholder="Times Up!"/>
-                    : 
-                    <input 
-                        type="text" 
-                        placeholder={`Press enter to search in ${cateName}`}
-                        value={value}
-                        onChange={handleChange}
-                        onKeyDown={handleKey}
-                        />
-                    }
-                    <button
-                        type="submit"
-                        className="SearchBar-button"
-                        value="submit"
-                        onClick={handleSubmit}>
-                        <img src="search.png" />
-                    </button>
-                    <ul id="searchList" className={searchList.length !== 0 && value !== "" && !(tempEnterEffect) ? "open" : "close"}>
+                <div className="SearchBar-searchBox">
+                    <ul className="SearchBar-tag">
+                        {tagList}
+                    </ul>
+                    <div className="SearchBar-inputColumn">
+                        {props.timesUp ? 
+                        <input
+                            readonly="readonly"
+                            placeholder="Times Up!"/>
+                        : 
+                        <input 
+                            type="text" 
+                            placeholder={`Press enter to search in ${cateName}`}
+                            value={value}
+                            onChange={handleChange}
+                            onKeyDown={handleKey}
+                            />
+                        }
+                        <button
+                            type="submit"
+                            className="SearchBar-button"
+                            value="submit"
+                            onClick={handleSubmit}>
+                            <img src="./patient-search-box/search.png" alt="" />
+                        </button>
+                    </div>
+                    <ul className={"SearchBar-searchList " + (searchList.length !== 0 && value !== "" ? "open" : "close")}>
                         {searchList}
                     </ul>
                 </div>

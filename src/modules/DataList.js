@@ -28,9 +28,9 @@ const DataList = (props) => {
             return (
                 <div 
                 className={"DataList-tag DataList-clickableTag "+ props.cateName} 
-                onClick={() => setClickedImage(data.imgsrc)} >
+                onClick={() => setClickedImage(`./patient-search-box/${data.imgsrc}`)} >
                     {`${data.ques}`}
-                    <img src="click.png" />
+                    <img src="./patient-search-box/click.png" />
                 </div>
             )
         }
@@ -42,7 +42,7 @@ const DataList = (props) => {
             className={"DataList-tag DataList-clickableTag "+ props.cateName} 
             onClick={() => setClickedTable(data.ans)} >
                 {`${data.ques}`}
-                <img src="click.png" />
+                <img src="./patient-search-box/click.png" />
             </div>
         )
     };
@@ -66,7 +66,7 @@ const DataList = (props) => {
     const dataHTML = (data) => {
         if (props.cateName === "Image") {
             return handleImage(data);
-        } else if (Array.isArray(data.ans)) {
+        } else if (Array.isArray(data.ans)) { // 只要 ans 是 array 就代表這是一個 table
             return handleTable(data);
         } else {
             return handleOthers(data);
